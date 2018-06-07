@@ -19,18 +19,17 @@
 import { EventBus } from '../app'
 export default {
   name: 'platforms',
+  delimiters: ['{%', '%}'],
   props: ['platforms', 'selected'],
-	data(){
-        return{mySelected: this.selected  }
-    },
-	methods:{
-        emitChange() {
-            EventBus.$emit('dataUpdate', this.mySelected)
-        }
-	},
-	watch: {
-	},
-	mounted() {
-	}
+  data () {
+    return { mySelected: this.selected }
+  },
+  methods: {
+    emitChange () {
+      EventBus.$emit('dataUpdate', this.mySelected)
+    }
+  },
+  mounted () {
+  }
 }
 </script>

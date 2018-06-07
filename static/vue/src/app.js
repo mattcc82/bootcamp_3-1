@@ -1,52 +1,51 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ECharts from 'vue-echarts'
+import Highcharts from 'vue-highcharts'
 
-Vue.component('chart', ECharts)
+Vue.component('chart', Highcharts)
 
 const EventBus = new Vue()
 
-const chart_base = {
-    chart: {
-        type: '',
-        renderTo: ''
-    },
-    credits: {
-        enabled: false
-    },
+const chartBase = {
+  chart: {
+    type: '',
+    renderTo: ''
+  },
+  credits: {
+    enabled: false
+  },
+  title: {
+    text: ''
+  },
+  xAxis: {
+    allowDecimals: false,
+    categories: [],
     title: {
-        text: ''
+      text: ''
+    }
+  },
+  yAxis: {
+    title: {
+      text: ''
     },
-    xAxis: {
-        allowDecimals: false,
-        categories: [],
-        title: {
-            text: ''
-        }
-    },
-    yAxis: {
-        title: {
-            text: ''
-        },
-        opposite: true,
-    },
-    plotOptions: {},
-    series: [{
-        name: '',
-        data: []
-    }],
-    credits: false
+    opposite: true
+  },
+  plotOptions: {},
+  series: [{
+    name: '',
+    data: []
+  }]
 }
 
 let GETDATA
-let BASE
+let GETPLATFORM
 
 if (process.env.NODE_ENV === 'production') {
   GETDATA = '/' + location.pathname.split('/')[1] + '/default/get_data'
-  BASE = '/' + location.pathname.split('/')[1] + '/default/index'
+  GETPLATFORM = '/' + location.pathname.split('/')[1] + '/default/get_platform'
 } else {
   GETDATA = '/default/get_data'
-  BASE = '/'
+  GETPLATFORM = '/default/get_platform'
 }
 
 new Vue({ // eslint-disable-line no-new
@@ -54,4 +53,4 @@ new Vue({ // eslint-disable-line no-new
   render: h => h(App)
 })
 
-export { EventBus, GETDATA, BASE, chart_base }
+export { EventBus, GETDATA, GETPLATFORM, chartBase }
