@@ -6,8 +6,8 @@
       <div class="panel-block">
           <div class="select is-multiple">
               <select multiple size="18" v-model='mySelected' v-on:change="emitChange" class='multi-select'>
-                  <option v-for="platform in platforms" v-bind:value="platform">
-                      {% platform %}
+                  <option v-for="platform in platforms" v-bind:value="platform" :key="platform">
+                      {{ platform }}
                   </option>
               </select>
           </div>
@@ -19,7 +19,6 @@
 import { EventBus } from '../app'
 export default {
   name: 'platforms',
-  delimiters: ['{%', '%}'],
   props: ['platforms', 'selected'],
   data () {
     return { mySelected: this.selected }

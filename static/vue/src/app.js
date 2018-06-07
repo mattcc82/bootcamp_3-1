@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Highcharts from 'vue-highcharts'
+// import Highcharts from 'highcharts'
 
-Vue.component('chart', Highcharts)
+// Vue.component('chart', Highcharts)
 
 const EventBus = new Vue()
 

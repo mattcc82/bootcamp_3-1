@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import Highcharts from 'vue-highcharts'
+const Highcharts = require('highcharts')
+
 export default {
   name: 'chart',
   props: ['options', 'render_to'],
@@ -23,10 +24,11 @@ export default {
         this.highChart.series[0].remove()
       }
       for (const v of this.options.series) {
-        this.highChart.addSeries(v, false)
+        this.highChart.addSeries(v, true)
+        // this.highChart.series[i].setData(v, true)
       }
-      this.highChart.update(this.options, false)
-      this.highChart.redraw()
+      // this.highChart.update(this.options, false)
+      // this.highChart.redraw()
     }
   },
   watch: {
@@ -39,7 +41,7 @@ export default {
   },
   mounted () {
     this.options.chart.renderTo = this.render_to
-    this.high_chart = new Highcharts.Chart(this.options)
+    this.highChart = new Highcharts.Chart(this.options)
   }
 }
 </script>

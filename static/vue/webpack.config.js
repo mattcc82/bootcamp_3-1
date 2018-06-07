@@ -91,7 +91,7 @@ module.exports = {
     noInfo: true,
     proxy: {
       '/default/get_data': {
-        target: 'http://127.0.0.1:8000/bootcamp_3',
+        target: 'http://127.0.0.1:8000/bootcamp_3_1',
         secure: false
       }
     }

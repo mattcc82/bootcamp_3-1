@@ -1,3 +1,38 @@
+<template>
+  <section>
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <platforms :platforms="platforms" :selected="selected"></platforms>
+      </div>
+
+      <div class="column">
+        <div class='columns'>
+          <div class="column">
+            <chart :options="chart1_options" :render_to="chart1_render_to"></chart>
+          </div>
+          <div class="column">
+            <chart :options="chart2_options" :render_to="chart2_render_to"></chart>
+          </div>
+        </div>
+        <div class='columns'>
+          <div class="column">
+            <chart :options="chart3_options" :render_to="chart3_render_to"></chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Data Processed in </strong> {{ run_time }}
+          </p>
+        </div>
+      </div>
+    </footer>
+  </section>
+</template>
+
 <script>
 import axios from 'axios'
 import _ from 'lodash'
@@ -11,16 +46,18 @@ export default {
     'chart': chart,
     'platforms': platforms
   },
-  data: {
-    run_time: '',
-    selected: [],
-    platforms: [],
-    chart1_options: _.cloneDeep(chartBase),
-    chart1_render_to: 'chart1',
-    chart2_options: _.cloneDeep(chartBase),
-    chart2_render_to: 'chart2',
-    chart3_options: _.cloneDeep(chartBase),
-    chart3_render_to: 'chart3'
+  data () {
+    return {
+      run_time: '',
+      selected: [],
+      platforms: [],
+      chart1_options: _.cloneDeep(chartBase),
+      chart1_render_to: 'chart1',
+      chart2_options: _.cloneDeep(chartBase),
+      chart2_render_to: 'chart2',
+      chart3_options: _.cloneDeep(chartBase),
+      chart3_render_to: 'chart3'
+    }
   },
   created () {
     EventBus.$on('dataUpdate', (mySelected) => {
